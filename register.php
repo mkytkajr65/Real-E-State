@@ -1,5 +1,4 @@
 <?php
-ob_start();
   require_once 'core/init.php';
 ?>
 <!DOCTYPE html>
@@ -27,12 +26,16 @@ ob_start();
     ini_set('display_startup_errors',1);
     error_reporting(-1);
       include("navbar.php");
+      if(Session::exists('message'))
+      {
+        include("modal.php");
+      }
       if(Input::exists())
       {
         if(Token::check(Input::get('token')))
         {
           $validation = new Validate();
-          $validation = $validation->check($_POST, array(
+          $validation->check($_POST, array(
               'username' => array(
                   'required' => true,
                   'min' => 2,
@@ -47,11 +50,20 @@ ob_start();
                   'required' => true,
                   'matches' => 'password'
                 ),
-              'name' => array(
+              'first_name' => array(
                   'required' => true,
                   'min' => 2,
-                  'max' => 50
+                  'max' => 20
                 ),
+              'last_name' => array(
+                  'required' => true,
+                  'min' => 2,
+                  'max' => 30
+                ),
+              'age' => array(
+                  'required' => true,
+                  'age' => 18
+                )
             ));
         }
       }
@@ -77,14 +89,16 @@ ob_start();
                       {
                         $user->create(array(
                             'username' => Input::get('username'),
-                            'password' => Hash::make(Input::get('username'), $salt),
+                            'password' => Hash::make(Input::get('password'), $salt),
                             'salt' => $salt,
-                            'name' => Input::get('name'),
+                            'first_name' => Input::get('first_name'),
+                            'last_name' => Input::get('last_name'),
+                            'age' => Input::get('age'),
                             'joined' => date('Y-m-d H:i:s'),
                             'group' => 1
                           ));
 
-                        Session::flash('home', 'You have been registered and can now log in.');
+                        Session::flash('message', 'You have been registered and can now log in.');
 
                         Redirect::to('index.php');
 
@@ -114,10 +128,27 @@ ob_start();
                    ?>">
                 </div>
                 <div class="form-group">
-                  <label for="name">Name</label>
-                  <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" value="<?php
-                      echo escape(Input::get('name'));
+                  <label for="first_name">First Name</label>
+                  <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Enter First Name" value="<?php
+                      echo escape(Input::get('first_name'));
                    ?>">
+                </div>
+                <div class="form-group">
+                  <label for="last_name">Last Name</label>
+                  <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Enter Last Name" value="<?php
+                      echo escape(Input::get('last_name'));
+                   ?>">
+                </div>
+                <div class="form-group">
+                  <label for="age">Age</label>
+                  <select id="age" name="age">
+                    <?php 
+                      for($value = 1; $value <= 100; $value++){ 
+                          $val = (Input::get('age')==$value) ? "selected": "";
+                          echo('<option '.$val.' value="' . $value . '">' . $value . '</option>');
+                      }
+                    ?>
+                  </select>
                 </div>
                 <div class="form-group">
                   <label for="password">Password</label>
@@ -140,5 +171,6 @@ ob_start();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/modal.js"></script>
   </body>
 </html>

@@ -23,6 +23,10 @@
   <body>
     <?php
       include("navbar.php");
+      if(Session::exists('message'))
+      {
+        include("modal.php");
+      }
     ?>
      <div class="container">
       <div class="row">
@@ -36,5 +40,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/modal.js"></script>
   </body>
 </html>

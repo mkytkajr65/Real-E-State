@@ -19,7 +19,6 @@ class Validate
 			{
 				$value = trim($source[$item]);
 				$item = escape($item);
-				
 				if($rule === 'required' && empty($value))
 				{
 					$this->addError("{$item} is required");
@@ -51,6 +50,12 @@ class Validate
 						if($check->count())
 						{
 							$this->addError("{$item} already exists.");
+						}
+						break;
+						case 'age':
+						if($value<$rule_value)
+						{
+							$this->addError("You must be {$rule_value} years or older.");
 						}
 						break;
 					}

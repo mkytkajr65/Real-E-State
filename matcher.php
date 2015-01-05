@@ -1,7 +1,5 @@
 <?php
   require_once 'core/init.php';
-	$user = new User();
-	$name = $user->data()->first_name." ".$user->data()->last_name;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Real E-State - <?php echo "{$name}'s profile"; ?></title>
+    <title>Real E-State - Matcher</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -33,6 +31,7 @@
      <div class="container">
       <div class="row">
         <div class="col-md-12">
+          
         </div>
       </div>
     </div>

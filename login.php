@@ -22,15 +22,25 @@
   </head>
   <body>
     <?php
-    ini_set('display_errors',1);
-    ini_set('display_startup_errors',1);
-    error_reporting(-1);
+      ini_set('display_errors',1);
+      ini_set('display_startup_errors',1);
+      error_reporting(-1);
       include("navbar.php");
+
+      if(Session::exists('message'))
+      {
+        include("modal.php");
+      }
+
       if(Input::exists())
       {
         if(Token::check(Input::get('token')))
         {
           $validation = new Validate();
+          $validation->check($_POST, array(
+              'username' => array('required' => true),
+              'password' => array('required' => true)
+            ));
         }
       }
     ?>
@@ -39,6 +49,40 @@
         <div class="col-md-12">
           <div class="row">
             <div class="col-md-6 center-block">
+            <?php
+            if(Session::exists('message'))
+            {
+              echo Session::get('message');
+            }
+              if(isset($validation))
+              {
+                if($validation->passed())
+                {
+                  $user = new User();
+                  $remember = (Input::get('remember') === "on") ? true : false;
+                  $login = $user->login(Input::get('username'), Input::get('password'), $remember);
+                  if($login)
+                  {
+                    Session::flash('message',"Hello! ".escape($user->data()->name).", you are signed in!");
+                    Redirect::to('home');
+                  }
+                  else
+                  {
+                    //Session::flash('message',"There is an error with your sign in.");
+                    //Redirect::to('current');
+                  }
+                }
+                else
+                {
+                  echo "<div class='alert alert-danger' role='alert'>";
+                  foreach($validation->errors() as $error)
+                  {
+                    echo "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span> {$error}<br>";
+                  }
+                  echo "</div>";
+                }
+              }
+            ?>
               <form action="" method="post">
                 <div class="form-group">
                   <label for="username">Username</label>
@@ -48,11 +92,11 @@
                   <label for="password">Password</label>
                   <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                 </div>
-                <!--<div class="checkbox">
+                <div class="checkbox">
                   <label>
-                    <input type="checkbox"> Remember Me
+                    <input name="remember" id="remember" type="checkbox"> Remember Me
                   </label>
-                </div>-->
+                </div>
                 <input type="hidden" name="token" value="<?php echo Token::generate(); ?>" >
                 <button type="submit" class="btn btn-success entireWidth">Log In</button>
               </form>
@@ -66,5 +110,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/modal.js"></script>
   </body>
 </html>

@@ -16,6 +16,17 @@ class Redirect
 					break;
 				}
 			}
+			else if($location==="home")
+			{
+				header('Location:index.php');
+				exit();
+			}
+			else if($location==="current")
+			{
+				$actual_link = str_replace("/", '', $_SERVER['REQUEST_URI']);
+				header('Location:'.$actual_link);
+				exit();
+			}
 			header('Location:'.$location);
 			exit();
 		}

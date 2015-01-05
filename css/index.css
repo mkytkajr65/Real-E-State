@@ -1,0 +1,68 @@
+.navbar {
+    margin-bottom: 0;
+}
+
+#userRow
+{
+	background-color: #374341;
+	color: white;
+	opacity: .8;
+	display: none;
+}
+
+#userBanner
+{
+	display: inline-block;
+}
+
+#firstRow
+{
+	background-color: #6E8C50;
+	color: white;
+	opacity: .8;
+	padding: 10em 0 13em 0;
+}
+
+#secondRow
+{
+	background-color: #BEC1C2;
+	color: white;
+	opacity: .8;
+	padding: 2em 0;
+}
+
+#thirdRow
+{
+	background-color: #091739;
+	height: 20em;
+	color: white;
+	opacity: .8;
+}
+
+.thumbnail
+{
+	padding:2px;
+}
+
+.thumbnail > img
+{
+	width: 100%;
+}
+
+#home_search
+{
+	width:100%;
+	border-radius: .1em;
+	border:0;
+	color:black;
+	font-size:3em;
+	outline: none;
+	padding: .1em;
+}
+
+#home_search_label
+{
+	font-size:3em;
+	color: black;
+	margin-right: .1em;
+}
