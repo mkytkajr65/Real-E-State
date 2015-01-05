@@ -40,9 +40,9 @@
         <div class="col-md-12">
           <div class="row text-center">
             <div class="col-xs-12 col-md-10 center-block settingsHeader">
-              <div class="col-xs-4 col-md-4"><span class="settingLink">General</span></div>
-              <div class="col-xs-4 col-md-4"><span class="settingLink">Account</span></div>
-              <div class="col-xs-4 col-md-4"><span class="settingLink">Privacy</span></div>
+              <div class="col-xs-4 col-md-4"><span class="settingLink noselect">General</span></div>
+              <div class="col-xs-4 col-md-4"><span class="settingLink noselect">Account</span></div>
+              <div class="col-xs-4 col-md-4"><span class="settingLink noselect">Privacy</span></div>
             </div>
           </div>
         
@@ -51,14 +51,15 @@
           <div id="settings-content">
             <div class='settingGroup first'>
             <?php
-              echo "<div>First Name: " . escape($targetUser->data()->first_name) . "</div><br>";
-              echo "<div>Last Name: " . escape($targetUser->data()->last_name) . "</div><br>";
-              echo "<div>Age: " . escape($targetUser->data()->age) . "</div><br>";
-              echo "<div>Username: " . escape($targetUser->data()->username). "</div>";
+              echo "<div><strong>First Name:</strong> " . escape($targetUser->data()->first_name) . "</div><br>";
+              echo "<div><strong>Last Name:</strong> " . escape($targetUser->data()->last_name) . "</div><br>";
+              echo "<div><strong>Email:</strong> " . escape($targetUser->data()->email) . "</div><br>";
+              echo "<div><strong>Age:</strong> " . escape($targetUser->data()->age) . "</div><br>";
+              echo "<div><strong>Username:</strong> " . escape($targetUser->data()->username). "</div>";
             ?>
             </div>
             <div class='settingGroup otherTab'>
-              <div>Account</div>
+              <div><strong>Account Type:</strong> <?php echo escape($targetUser->data()->account_type) ?></div>
             </div>
             <div class='settingGroup otherTab'>
               <div>Privacy</div>

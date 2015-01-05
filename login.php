@@ -63,13 +63,13 @@
                   $login = $user->login(Input::get('username'), Input::get('password'), $remember);
                   if($login)
                   {
-                    Session::flash('message',"Hello! ".escape($user->data()->name).", you are signed in!");
+                    Session::flash('message',"Hello! ".escape($user->data()->first_name).", you are signed in!");
                     Redirect::to('home');
                   }
                   else
                   {
-                    //Session::flash('message',"There is an error with your sign in.");
-                    //Redirect::to('current');
+                    Session::flash('message',"There is an error with your sign in.");
+                    Redirect::to('current');
                   }
                 }
                 else

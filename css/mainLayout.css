@@ -21,3 +21,26 @@ body
 {
 	border: 1px solid black;
 }
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.navbar-default .navbar-nav > .Qactive > a {
+    color: white;
+    background-color: #091739;
+    opacity: .9;
+}
+
+.navbar-default .navbar-nav > .Qactive > a:hover, 
+.navbar-default .navbar-nav > .Qactive > a:focus
+{
+    color: grey;
+    background-color: #091739;
+    opacity: .9;
+}

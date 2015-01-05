@@ -50,15 +50,34 @@
               </div>
           </div>
           <div class="row" id="firstRow">
-            <div class="col-md-6 center-block text-center">
-              <form action="" method="get">
-                <label for="home_search" id="home_search_label">Enter Info</label>
-                <input type="text" name="home_search" placeholder="Search" id="home_search">
+            <div class="col-md-8 center-block text-center">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="jumbotron text-left">
+                    <h1>Welcome to Real E-State!</h1>
+                    <p>Cras justo odio, dapibus ac facilisis in,
+                     egestas eget quam. Donec id elit non mi porta
+                      gravida at eget metus. Nullam id dolor id nibh
+                       ultricies vehicula ut id elit.Cras justo odio,
+                        dapibus ac facilisis in,
+                     egestas eget quam. Donec id elit non mi porta
+                      gravida at eget metus. Nullam id dolor id nibh
+                       ultricies vehicula ut id elit. Try our state-of-the-art Real Match Engine.</p>
+                       <p><a class="btn btn-primary btn-lg entireWidth" id="jumboButton" href="matcher.php" role="button">Real Match</a></p>
+                  </div>
+                </div>
+              </div>
+              <form class="form-inline" action="search.php" method="get">
+                <div class="form-group">
+                  <label for="query" class="sr-only" id="home_search_label">Enter Info</label>
+                  <input type="text" name="query" title="search" placeholder="Search Real E-State" id="home_search">
+                </div>
+                <button type="submit" class="btn btn-primary" id="mainSearchButton">Search</button>
               </form>
             </div>
           </div>
         <div class="row" id="secondRow">
-          <div class="col-md-9 center-block">
+          <div class="col-md-10 center-block">
             <div class="row">
               <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">

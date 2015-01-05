@@ -17,10 +17,10 @@
 
 #firstRow
 {
-	background-color: #6E8C50;
+	background-color: #12200E;
 	color: white;
 	opacity: .8;
-	padding: 10em 0 13em 0;
+	padding: 5em 0 10em 0;
 }
 
 #secondRow
@@ -51,7 +51,7 @@
 
 #home_search
 {
-	width:100%;
+	width: 100%;
 	border-radius: .1em;
 	border:0;
 	color:black;
@@ -65,4 +65,25 @@
 	font-size:3em;
 	color: black;
 	margin-right: .1em;
+}
+
+#mainSearchButton
+{
+	font-size:3em;
+	width: 5.5em;
+}
+
+.jumbotron
+{
+	background-color: #1F2423;
+}
+
+#jumboButton
+{
+	font-size: 1.7em;
+	background-color: #1F2423;
+}
+#jumboButton:hover
+{
+	border-color: white;
 }

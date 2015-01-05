@@ -80,9 +80,7 @@ class User
 			$user = $this->find($username);
 			if($user)
 			{
-				echo $hashed = Hash::make($password, $this->data()->salt);
-				echo "<br>";
-				echo $this->data()->password;
+				$hashed = Hash::make($password, $this->data()->salt);
 				if($this->data()->password === $hashed)
 				{
 					echo "matches";

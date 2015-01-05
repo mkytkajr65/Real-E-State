@@ -49,13 +49,19 @@ class Validate
 						$check = $this->_db->get($rule_value, array($item,'=',$value));
 						if($check->count())
 						{
-							$this->addError("{$item} already exists.");
+							$this->addError("{$item} already taken.");
 						}
 						break;
 						case 'age':
 						if($value<$rule_value)
 						{
 							$this->addError("You must be {$rule_value} years or older.");
+						}
+						break;
+						case 'email':
+						if (!filter_var($value, FILTER_VALIDATE_EMAIL))
+						{
+						    $this->addError("Invalid Email Address.");
 						}
 						break;
 					}

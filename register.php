@@ -55,6 +55,11 @@
                   'min' => 2,
                   'max' => 20
                 ),
+              'email' => array(
+                  'required' => true,
+                  'email' => true,
+                  'unique' => 'users'
+                ),
               'last_name' => array(
                   'required' => true,
                   'min' => 2,
@@ -63,6 +68,9 @@
               'age' => array(
                   'required' => true,
                   'age' => 18
+                ),
+              'account_type' => array(
+                  'required' => true
                 )
             ));
         }
@@ -94,6 +102,8 @@
                             'first_name' => Input::get('first_name'),
                             'last_name' => Input::get('last_name'),
                             'age' => Input::get('age'),
+                            'email' => Input::get('email'),
+                            'account_type' => Input::get('account_type'),
                             'joined' => date('Y-m-d H:i:s'),
                             'group' => 1
                           ));
@@ -138,6 +148,21 @@
                   <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Enter Last Name" value="<?php
                       echo escape(Input::get('last_name'));
                    ?>">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="text" class="form-control" name="email" id="email" placeholder="Enter Email" value="<?php
+                      echo escape(Input::get('email'));
+                   ?>">
+                </div>
+                <div class="form-group">
+                  <label for="account_type">Account Type</label>
+                  <select name="account_type" id="account_type">
+                    <option <?php echo (Input::get('account_type')==='landlord')
+                     ? "selected": ""; ?> value="landlord">Landlord</option>
+                    <option <?php echo (Input::get('account_type')==='tenant')
+                     ? "selected": ""; ?> value="tenant">Tenant</option>
+                  </select>
                 </div>
                 <div class="form-group">
                   <label for="age">Age</label>

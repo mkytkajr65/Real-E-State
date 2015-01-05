@@ -18,8 +18,26 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-         <li <?php echo ($actual_link==="index.php") ? "class='active'" : ''; ?>><a href="index.php">Home</a></li>
-         <li <?php echo ($actual_link==="matcher.php") ? "class='active'" : ''; ?>><a href="matcher.php">Match Engine</a></li>
+        <li <?php echo ($actual_link==="index.php") ? "class='active'" : ''; ?>><a href="index.php">Home</a></li>
+        <?php 
+          if($currentUser->getIsLoggedIn())
+          {
+           echo "<li";
+            echo ($actual_link==="stream.php") ? " class='active'" : '';
+            echo "><a href='stream.php'>Stream</a></li>";
+          }
+        ?>
+         <li class="Qactive"><a href="matcher.php">Real Match &#0153;</a></li>
+         <div class="col-sm-3 col-md-6 pull-right">
+            <form class="navbar-form" role="search" method="get" action="search.php">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="query">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>     
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <?php
