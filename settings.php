@@ -34,15 +34,16 @@
       {
         include("modal.php");
       }
+      include("passwordModal.php");
     ?>
      <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="row text-center">
             <div class="col-xs-12 col-md-10 center-block settingsHeader">
-              <div class="col-xs-4 col-md-4"><span class="settingLink noselect">General</span></div>
-              <div class="col-xs-4 col-md-4"><span class="settingLink noselect">Account</span></div>
-              <div class="col-xs-4 col-md-4"><span class="settingLink noselect">Privacy</span></div>
+              <div class="col-xs-4 col-md-4"><span class="settingLink coolButton noselect">General</span></div>
+              <div class="col-xs-4 col-md-4"><span class="settingLink coolButton noselect">Account</span></div>
+              <div class="col-xs-4 col-md-4"><span class="settingLink coolButton noselect">Privacy</span></div>
             </div>
           </div>
         
@@ -51,18 +52,22 @@
           <div id="settings-content">
             <div class='settingGroup first'>
             <?php
-              echo "<div><strong>First Name:</strong> " . escape($targetUser->data()->first_name) . "</div><br>";
-              echo "<div><strong>Last Name:</strong> " . escape($targetUser->data()->last_name) . "</div><br>";
-              echo "<div><strong>Email:</strong> " . escape($targetUser->data()->email) . "</div><br>";
-              echo "<div><strong>Age:</strong> " . escape($targetUser->data()->age) . "</div><br>";
-              echo "<div><strong>Username:</strong> " . escape($targetUser->data()->username). "</div>";
+              echo "<div><strong>First Name</strong> " . escape($targetUser->data()->first_name) . "</div><br>";
+              echo "<div><strong>Last Name</strong> " . escape($targetUser->data()->last_name) . "</div><br>";
+              echo "<div><strong>Email</strong> " . escape($targetUser->data()->email) . "</div><br>";
+              echo "<div><strong>Age</strong> " . escape($targetUser->data()->age) . "</div><br>";
+              echo "<div><strong>Username</strong> " . escape($targetUser->data()->username). "</div>";
             ?>
+              <div class="noselect" id="editPassword"><strong class="neonBorder">edit password</strong></div>
+              <div class="col-md-3 center-block editbutton noselect text-center">edit</div>
             </div>
             <div class='settingGroup otherTab'>
               <div><strong>Account Type:</strong> <?php echo escape($targetUser->data()->account_type) ?></div>
+              <div class="col-md-3 center-block editbutton noselect text-center">edit</div>
             </div>
             <div class='settingGroup otherTab'>
               <div>Privacy</div>
+              <div class="col-md-3 center-block editbutton noselect text-center">edit</div>
             </div>
           </div>
         </div>
@@ -77,5 +82,6 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/modal.js"></script>
     <script src="js/settings.js"></script>
+    <script src="js/passwordModal.js"></script>
   </body>
 </html>

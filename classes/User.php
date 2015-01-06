@@ -69,6 +69,23 @@ class User
 		return (!empty($this->_data)) ? true : false;
 	}
 
+	public function checkPassword($password = null)
+	{
+		if($password)
+		{
+			$user = $this->getIsLoggedIn();
+			if($user)
+			{
+				$hashed = Hash::make($password, $this->data()->salt);
+				if($this->data()->password === $hashed)
+				{
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 	public function login($username = null, $password = null, $remember = false)
 	{
 		if (!$username && !$password && $this->exists())

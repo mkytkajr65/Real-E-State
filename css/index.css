@@ -57,7 +57,8 @@
 	color:black;
 	font-size:3em;
 	outline: none;
-	padding: .1em;
+	padding: .15em;
+	height: 100%;
 }
 
 #home_search_label
@@ -71,6 +72,7 @@
 {
 	font-size:3em;
 	width: 5.5em;
+	height: 100%;
 }
 
 .jumbotron
@@ -86,4 +88,9 @@
 #jumboButton:hover
 {
 	border-color: white;
+}
+
+a:active,
+a:hover {
+  color: #337ab7;
 }

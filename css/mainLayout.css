@@ -31,16 +31,27 @@ body
     user-select: none;
 }
 
-.navbar-default .navbar-nav > .Qactive > a {
+.navbar-default .navbar-nav > .navHighlight > a {
     color: white;
     background-color: #091739;
     opacity: .9;
 }
 
-.navbar-default .navbar-nav > .Qactive > a:hover, 
-.navbar-default .navbar-nav > .Qactive > a:focus
+.navbar-default .navbar-nav > .navHighlight > a:hover, 
+.navbar-default .navbar-nav > .navHighlight > a:focus
 {
     color: grey;
     background-color: #091739;
-    opacity: .9;
 }
+
+.coolButton
+{
+    background-color: #1F2423;
+}
+
+.coolButton:hover, .coolButton:focus
+{
+    border-color: white;
+    background-color: #1F2423;
+}
+

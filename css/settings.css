@@ -1,13 +1,30 @@
+body
+{
+	background-color: #1f2423;
+}
+
+.settingGroup > div > strong
+{
+	border: 1px solid #337ab7;
+	display: inline-block;
+	padding: .5em;
+	margin-bottom: 1em;
+	border-radius: 3px;
+}
+
+.settingGroup > div
+{
+	font-size: 1.5em;
+}
 .settingLink
 {
 	cursor: pointer;
-	background-color: #000066;
 	color:white;
 	padding: 1em 0;
 	height: 100%;
 	height: 100%;
 	border-radius: .2em;
-	border: 1px solid black;
+	border: 1px solid #337ab7;
 	display: block;
 }
 
@@ -23,15 +40,14 @@
 }
 #settings-content
 {
-	border: 1px solid black;
-	height: 30em;
 	padding: 1em;
+	color: white;
 }
 
-.present
+.present, .present:hover, .present:focus
 {
-	background-color: #374341;
-	color:white;
+	color:black;
+	background-color: #337ab7;
 }
 
 .firstTab
@@ -42,4 +58,35 @@
 .otherTab
 {
 	display: none;
+}
+
+.editbutton
+{
+	color:black;
+	background-color: #337ab7;
+	font-size: 2em;
+	cursor: pointer;
+	padding: .3em;
+	border-radius: 2px;
+	margin-top: 1em;
+}
+
+#editPassword
+{
+	cursor:pointer;
+	margin-top: 1em;
+}
+
+#editPassword > strong
+{
+	border: 1px solid #73E83B;
+}
+
+#editPassword > strong:hover,#editPassword > strong:focus
+{
+	border: 1px solid white;
+}
+.hideForm
+{
+	display:none;
 }

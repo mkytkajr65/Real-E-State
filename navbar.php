@@ -27,7 +27,7 @@
             echo "><a href='stream.php'>Stream</a></li>";
           }
         ?>
-         <li class="Qactive"><a href="matcher.php">Real Match &#0153;</a></li>
+         <li class="navHighlight"><a href="matcher.php">Real Match &#0153;</a></li>
          <div class="col-sm-3 col-md-6 pull-right">
             <form class="navbar-form" role="search" method="get" action="search.php">
                 <div class="input-group">

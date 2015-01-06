@@ -12,6 +12,7 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/mainLayout.css" rel="stylesheet">
+    <link href="css/register.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -184,7 +185,7 @@
                   <input type="password" class="form-control" name="password_again" id="password_again" placeholder="Password Again">
                 </div>
                 <input type="hidden" name="token" value="<?php echo Token::generate();?>">
-                <button type="submit" class="btn btn-primary entireWidth">Register</button>
+                <button type="submit" class="btn btn-primary entireWidth coolButton">Register</button>
               </form>
             </div>
           </div>

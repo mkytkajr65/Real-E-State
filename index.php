@@ -38,7 +38,7 @@
                 <h3><?php
                     if(!$user->getIsLoggedIn())
                     {
-                      echo "Welcome! Please Log In or Make an Account!";
+                      echo "Welcome! Please <a href='login.php'>Log In</a> or <a href='register.php'>Make an Account!</a>";
                     }
                     else
                     {
@@ -69,7 +69,7 @@
               </div>
               <form class="form-inline" action="search.php" method="get">
                 <div class="form-group">
-                  <label for="query" class="sr-only" id="home_search_label">Enter Info</label>
+                  <label for="query" class="sr-only" id="home_search_label"></label>
                   <input type="text" name="query" title="search" placeholder="Search Real E-State" id="home_search">
                 </div>
                 <button type="submit" class="btn btn-primary" id="mainSearchButton">Search</button>

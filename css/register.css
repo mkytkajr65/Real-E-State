@@ -1,0 +1,14 @@
+body
+{
+	background-color: #43474C;
+}
+
+label
+{
+	color:white;
+}
+
+.coolButton,.coolButton:hover, .coolButton:focus
+{
+	background-color: #43474C
+}
