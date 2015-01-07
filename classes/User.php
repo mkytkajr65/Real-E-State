@@ -62,6 +62,8 @@ class User
 			if($data->count())
 			{
 				$this->_data = $data->first();
+				$this->bio = $this->data()->bio;
+				$this->picture = $this->data()->picture;
 				return true;
 			}
 		}

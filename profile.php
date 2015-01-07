@@ -1,6 +1,15 @@
 <?php
   require_once 'core/init.php';
-	$user = new User();
+  $user = new User(Input::get('id'));
+  $currentUser = new User();
+  if($currentUser->getIsLoggedIn())
+  {
+    //if the user is logged in then grab his own information
+    if($currentUser->data()->id==Input::get('id'))
+    {
+      $user = $currentUser;
+    }
+  }
   if(!$user->exists())
   {
     Redirect::to('404');
@@ -40,12 +49,32 @@
         <div class="col-md-12"> 
           <div class="row"> <!--Top Row-->
             <div class="col-md-12">
-              <div class="row">
+              <div class="row"> <!--Side Column-->
                 <div class="col-md-offset-1 col-md-2">
-                  <div class="row">
-                    <div class="col-md-12" id="profileInfo">
-                  <img src="images/<?php echo $user->picture ?>" class="img-responsive sBlueBorder"
-                   id="profileBubble" alt="<?php echo $user->data()->first_name?>'s profile pic">
+                  <div class="row"> 
+                    <div class="col-md-12" id="profileInfoAreaContainer">
+                      <img src="images/<?php echo $user->picture ?>" class="img-responsive sBlueBorder"
+                      id="profileBubble" alt="<?php echo $user->data()->first_name?>'s profile pic">
+                      <div class="lead" id="profileInfoArea">
+                        <strong class="sBlueBorder profileInfo">Name:</strong>
+                        <div class="pInfoText">
+                          <?php echo $name;
+
+                            if($user->getIsLoggedIn())
+                            {
+                              echo "This is your profile";
+                            }
+                            else
+                            {
+                              echo "This is not your profile";
+                            }
+                           ?>
+                        </div>
+                        <strong class="sBlueBorder profileInfo">Bio:</strong>
+                        <div class="pInfoText">
+                          <?php echo $user->bio; ?>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
