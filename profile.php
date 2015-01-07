@@ -1,6 +1,10 @@
 <?php
   require_once 'core/init.php';
 	$user = new User();
+  if(!$user->exists())
+  {
+    Redirect::to('404');
+  }
 	$name = $user->data()->first_name." ".$user->data()->last_name;
 ?>
 <!DOCTYPE html>
@@ -14,6 +18,7 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/mainLayout.css" rel="stylesheet">
+    <link href="css/profile.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -30,9 +35,26 @@
         include("modal.php");
       }
     ?>
-     <div class="container">
-      <div class="row">
-        <div class="col-md-12">
+     <div class="container-fluid">
+      <div class="row"> <!--Entire Page Row-->
+        <div class="col-md-12"> 
+          <div class="row"> <!--Top Row-->
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-offset-1 col-md-2">
+                  <div class="row">
+                    <div class="col-md-12" id="profileInfo">
+                  <img src="images/<?php echo $user->picture ?>" class="img-responsive sBlueBorder"
+                   id="profileBubble" alt="<?php echo $user->data()->first_name?>'s profile pic">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-8">
+                  
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

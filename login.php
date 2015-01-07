@@ -36,7 +36,7 @@
         {
           $validation = new Validate();
           $validation->check($_POST, array(
-              'username' => array('required' => true),
+              'email' => array('required' => true, 'email' => 'true'),
               'password' => array('required' => true)
             ));
         }
@@ -46,58 +46,64 @@
       <div class="row">
         <div class="col-md-12">
           <div class="row">
-            <div class="col-md-6 center-block loginArea">
-            <?php
-            if(Session::exists('message'))
-            {
-              echo Session::get('message');
-            }
-              if(isset($validation))
-              {
-                if($validation->passed())
-                {
-                  $user = new User();
-                  $remember = (Input::get('remember') === "on") ? true : false;
-                  $login = $user->login(Input::get('username'), Input::get('password'), $remember);
-                  if($login)
+            <div class="col-md-10 center-block loginArea">
+              <div class="row">
+                <div class="col-md-5 center-block">
+                  <?php
+                  if(Session::exists('message'))
                   {
-                    Session::flash('message',"Hello! ".escape($user->data()->first_name).", you are signed in!");
-                    Redirect::to('home');
+                    echo Session::get('message');
                   }
-                  else
-                  {
-                    Session::flash('message',"There is an error with your sign in.");
-                    Redirect::to('current');
-                  }
-                }
-                else
-                {
-                  echo "<div class='alert alert-danger' role='alert'>";
-                  foreach($validation->errors() as $error)
-                  {
-                    echo "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span> {$error}<br>";
-                  }
-                  echo "</div>";
-                }
-              }
-            ?>
-              <form action="" method="post">
-                <div class="form-group">
-                  <label for="username">Username</label>
-                  <input type="text" class="form-control login" name="username" id="username" placeholder="Enter username">
+                    if(isset($validation))
+                    {
+                      if($validation->passed())
+                      {
+                        $user = new User();
+                        $remember = (Input::get('remember') === "on") ? true : false;
+                        $login = $user->login(Input::get('email'), Input::get('password'), $remember);
+                        if($login)
+                        {
+                          Session::flash('message',"Hello! ".escape($user->data()->first_name).", you are signed in!");
+                          Redirect::to('home');
+                        }
+                        else
+                        {
+                          Session::flash('message',"There is an error with your sign in.");
+                          Redirect::to('current');
+                        }
+                      }
+                      else
+                      {
+                        echo "<div class='alert alert-danger' role='alert'>";
+                        foreach($validation->errors() as $error)
+                        {
+                          echo "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span> {$error}<br>";
+                        }
+                        echo "</div>";
+                      }
+                    }
+                  ?>
+                  <form action="" method="post">
+                    <div class="form-group">
+                      <label for="email">Email</label>
+                      <input type="text" class="form-control login" name="email" id="email" placeholder="Enter email" value="<?php
+                      echo escape(Input::get('email'));
+                   ?>">
+                    </div>
+                    <div class="form-group">
+                      <label for="password">Password</label>
+                      <input type="password" class="form-control login" name="password" id="password" placeholder="Password">
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input name="remember" id="remember" type="checkbox"> Remember Me
+                      </label>
+                    </div>
+                    <input type="hidden" name="token" value="<?php echo Token::generate(); ?>" >
+                    <button type="submit" class="btn btn-primary entireWidth coolButton">Log In</button>
+                  </form>
                 </div>
-                <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="password" class="form-control login" name="password" id="password" placeholder="Password">
-                </div>
-                <div class="checkbox">
-                  <label>
-                    <input name="remember" id="remember" type="checkbox"> Remember Me
-                  </label>
-                </div>
-                <input type="hidden" name="token" value="<?php echo Token::generate(); ?>" >
-                <button type="submit" class="btn btn-primary entireWidth coolButton">Log In</button>
-              </form>
+              </div>
             </div>
           </div>
         </div>

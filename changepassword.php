@@ -28,10 +28,21 @@
 		          $currentUser->update(array(
 		          		'password' => Hash::make(Input::get('password'), $currentUser->data()->salt)
 		          	));
-		          echo true;
+		          $rv = array('didPass' => true);
+              echo json_encode($rv);
+              exit();
 		      	}
+            else
+            {
+              $rv = array('didPass' => false, 'errors' => 'There are errors');
+              echo json_encode($rv);
+              exit();
+            }
 	      	}
         }
+        $rv = array('didPass' => false, 'errors' => 'There are errors');
+        echo json_encode($rv);
+        exit();
       }
-      echo false;
+      
 ?>

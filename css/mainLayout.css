@@ -44,14 +44,33 @@ body
     background-color: #091739;
 }
 
-.coolButton
+.coolButton,.coolButton:hover, .coolButton:focus
 {
-    background-color: #1F2423;
+    background-color: #1f2423;
 }
 
 .coolButton:hover, .coolButton:focus
 {
-    border-color: white;
-    background-color: #1F2423;
+    border-color: #73E83B;
+}
+
+.neon
+{
+    color: #73E83B;
+}
+
+.sBlue
+{
+    color: #337ab7;
+}
+
+.sBlueBorder
+{
+    border:1px solid #337ab7;
+}
+
+.neonBorder
+{
+    border:1px solid #73E83B;
 }
 

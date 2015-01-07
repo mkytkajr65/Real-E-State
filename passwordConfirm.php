@@ -20,12 +20,27 @@
                   $correctPass = $user->checkPassword($password);
                   if($correctPass)
                   {
-                  	Redirect::to('home');
-                  	echo true;
+                  	$rv = array('didPass' => true);
+              		echo json_encode($rv);
+              		exit();
+                  }
+                  else
+                  {
+                  	$rv = array('didPass' => false, 'errors' => "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span> password not correct<br>");
+              		echo json_encode($rv);
+              		exit();
                   }
               	}
             }
+            else
+          	{
+              	$rv = array('didPass' => false, 'errors' => "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span> something went wrong<br>");
+          		echo json_encode($rv);
+          		exit();
+          	}
 	    }
-	    echo false;
 	}
+	$rv = array('didPass'=> false, 'errors' => "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span> You must enter something!<br>");
+    echo json_encode($rv);
+    exit();
 ?>

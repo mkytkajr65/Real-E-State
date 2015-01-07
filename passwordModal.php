@@ -8,6 +8,8 @@
         <h4 class="modal-title">Change Password</h4>
       </div>
       <div class="modal-body">
+        <div class='alert alert-danger' id="errorDiv" role='alert'>
+        </div>
         <form action="" method="post" id="confirm_password">
           <div class="form-group">
             <label for="confirm_password">Confirm Password</label>
@@ -16,7 +18,7 @@
           <input type="hidden" name="token" value="<?php echo $token; ?>" >
           <button type="submit" class="btn btn-primary entireWidth coolButton">Confirm</button>
         </form>
-        <form action="" method="post" id="change_password" class="hideForm">
+        <form action="" method="post" id="change_password" class="hideObj">
           <div class="form-group">
             <label for="password">Enter New Password</label>
             <input type="password" class="form-control" name="password" id="password" placeholder="Enter your new password">

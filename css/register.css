@@ -1,6 +1,6 @@
 body
 {
-	background-color: #43474C;
+	background-color: #1f2423;
 }
 
 label
@@ -10,5 +10,5 @@ label
 
 .coolButton,.coolButton:hover, .coolButton:focus
 {
-	background-color: #43474C
+	background-color: #1f2423;
 }

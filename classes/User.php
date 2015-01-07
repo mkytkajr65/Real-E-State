@@ -2,6 +2,7 @@
 class User
 {
 	private $_db, $_data, $_sessionName, $_isLoggedIn, $_cookieName;
+	public $picture, $bio;
 
 	public function __construct($user = null)
 	{
@@ -17,6 +18,8 @@ class User
 				if($this->find($user))
 				{
 					$this->_isLoggedIn = true;
+					$this->bio = $this->data()->bio;
+					$this->picture = $this->data()->picture;
 				}
 				else
 				{
@@ -64,6 +67,21 @@ class User
 		}
 	}
 
+	public function findWithEmail($email = null)
+	{
+		if($email)
+		{
+			$field = "email";
+			$data = $this->_db->get('users', array($field, '=', $email));
+
+			if($data->count())
+			{
+				$this->_data = $data->first();
+				return true;
+			}
+		}
+	}
+
 	public function exists()
 	{
 		return (!empty($this->_data)) ? true : false;
@@ -86,15 +104,15 @@ class User
 		return false;
 	}
 
-	public function login($username = null, $password = null, $remember = false)
+	public function login($email = null, $password = null, $remember = false)
 	{
-		if (!$username && !$password && $this->exists())
+		if (!$email && !$password && $this->exists())
 		{
 			Session::put($this->_sessionName, $this->data()->id);
 		}
 		else
 		{
-			$user = $this->find($username);
+			$user = $this->findWithEmail($email);
 			if($user)
 			{
 				$hashed = Hash::make($password, $this->data()->salt);
@@ -140,6 +158,11 @@ class User
 	public function data()
 	{
 		return $this->_data;
+	}
+
+	public function getDB()
+	{
+		return $this->_db;
 	}
 
 	public function getIsLoggedIn()

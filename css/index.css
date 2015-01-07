@@ -6,7 +6,7 @@
 {
 	background-color: #374341;
 	color: white;
-	opacity: .8;
+	opacity: .9;
 	display: none;
 }
 
@@ -77,17 +77,12 @@
 
 .jumbotron
 {
-	background-color: #1F2423;
+	background-color: #1f2423;
 }
 
 #jumboButton
 {
 	font-size: 1.7em;
-	background-color: #1F2423;
-}
-#jumboButton:hover
-{
-	border-color: white;
 }
 
 a:active,

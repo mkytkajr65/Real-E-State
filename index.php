@@ -42,7 +42,7 @@
                     }
                     else
                     {
-                       echo "Hello, {$user->data()->first_name}!";
+                       echo "Hello, {$user->data()->first_name}! Start your Real Match Application now.";
                     }
                  ?>
                  <button type="button" class="close" ><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
@@ -63,7 +63,7 @@
                      egestas eget quam. Donec id elit non mi porta
                       gravida at eget metus. Nullam id dolor id nibh
                        ultricies vehicula ut id elit. Try our state-of-the-art Real Match Engine.</p>
-                       <p><a class="btn btn-primary btn-lg entireWidth" id="jumboButton" href="matcher.php" role="button">Real Match</a></p>
+                       <p><a class="btn btn-primary btn-lg entireWidth coolButton" id="jumboButton" href="matcher.php" role="button">Real Match</a></p>
                   </div>
                 </div>
               </div>

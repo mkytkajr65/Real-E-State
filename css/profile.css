@@ -1,0 +1,21 @@
+body
+{
+	background-color: #43474C;
+}
+
+.navbar {
+    margin-bottom: 1em;
+}
+
+#profileBubble
+{
+	height: 20em;
+	width: 20em;
+	border-radius: 50%;
+	border-width: 2px;
+}
+
+#profileInfo
+{
+	padding: 2em 1em;
+}

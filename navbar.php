@@ -53,17 +53,23 @@
           }
           else
           {
+            echo "<li class='dropdown'>";
+            echo "<a href='#'' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-expanded='false'><span class='sBlue'>". $currentUser->data()->first_name." ". $currentUser->data()->last_name ."</span><span class='caret neon'></span></a>";
+            echo "<ul class='dropdown-menu' role='menu'>";
+
             echo "<li";
             echo ($actual_link==="profile.php") ? " class='active'" : '';
             echo "><a href='profile.php'>Profile</a></li>";
-            echo "<li";
 
+            echo "<li";
             echo ($actual_link==="settings.php") ? " class='active'" : '';
             echo "><a href='settings.php'>Settings</a></li>";
 
             echo "<li";
             echo ($actual_link==="logout.php") ? " class='active'" : '';
             echo "><a href='logout.php'>Log Out</a></li>";
+            echo " </ul>
+            </li>";
           }
         ?>
         

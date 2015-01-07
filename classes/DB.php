@@ -54,6 +54,17 @@ class DB
 		return $this;
 	}
 
+	public function fetchToClass($sql, $class) {
+		$this->_query = $this->_pdo->_query($sql);
+
+		if ($this->_query->execute()) {
+			$this->_results = $this->_query->fetchAll(PDO::FETCH_CLASS, $class);
+			$this->_count = $this->_query->rowCount();
+		}
+
+		return $this->_results;
+	}
+
 	public function action($action, $table, $where = array())
 	{
 		if(count($where) === 3)

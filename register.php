@@ -23,9 +23,6 @@
   </head>
   <body>
     <?php
-    ini_set('display_errors',1);
-    ini_set('display_startup_errors',1);
-    error_reporting(-1);
       include("navbar.php");
       if(Session::exists('message'))
       {
@@ -94,6 +91,36 @@
 
                       $salt = Hash::salt(32);
 
+                      print_r($_FILES);
+
+                      if(isset($_FILES['picture'])){
+                        $errors= array();
+                        $file_name = $_FILES['picture']['name'];
+                        $file_size =$_FILES['picture']['size'];
+                        $file_tmp =$_FILES['picture']['tmp_name'];
+                        $file_type=$_FILES['picture']['type'];  
+                        $tmp = explode('.',$_FILES['picture']['name']); 
+                        $file_ext=strtolower(end($tmp));
+                        $extensions = array("jpeg","jpg","png");    
+                        if(in_array($file_ext,$extensions )=== false){
+                         $errors[]="extension not allowed, please choose a JPEG or PNG file.";
+                        }
+                        if($file_size > 2097152){
+                        $errors[]='File size must be excately 2 MB';
+                        }       
+                        if(empty($errors)==true){
+                            $picture = $file_name;
+                            move_uploaded_file($file_tmp,"images/".$file_name);
+                            echo "Success";
+                        }else{
+                            print_r($errors);
+                        }
+                      }
+                      else
+                      {
+                        $picture = 'default.jpg';
+                      }
+
                       try
                       {
                         $user->create(array(
@@ -106,12 +133,14 @@
                             'email' => Input::get('email'),
                             'account_type' => Input::get('account_type'),
                             'joined' => date('Y-m-d H:i:s'),
-                            'group' => 1
+                            'group' => 1,
+                            'picture' => $picture,
+                            'bio' => 'This is my bio'
                           ));
 
                         Session::flash('message', 'You have been registered and can now log in.');
 
-                        Redirect::to('index.php');
+                        Redirect::to('login.php');
 
                       }catch(Exception $e)
                       {
@@ -131,7 +160,7 @@
                   ?>
               </div>
             </div>
-              <form action="" method="post">
+              <form enctype="multipart/form-data" action="" method="post">
                 <div class="form-group">
                   <label for="username">Username</label>
                   <input type="text" class="form-control" name="username" id="username" placeholder="Enter username" value="<?php
@@ -155,6 +184,11 @@
                   <input type="text" class="form-control" name="email" id="email" placeholder="Enter Email" value="<?php
                       echo escape(Input::get('email'));
                    ?>">
+                </div>
+                <div class="form-group">
+                  <label for="picture">Profile Image</label>
+                  <input type="file" accept="image/*" id="picture" name="picture">
+                  <p class="help-block">Please Select a Profile Image</p>
                 </div>
                 <div class="form-group">
                   <label for="account_type">Account Type</label>

@@ -4,6 +4,7 @@ $("#editPassword").click(function(){
 
 $(document).ready(function(){
 	$('#passwordModal').modal('hide');
+  $("#errorDiv").addClass("hideObj")
 });
 
 var confirmed = false;
@@ -24,15 +25,19 @@ $( "#confirm_password" ).submit(function( event ) {
   // Send the data using post
   var posting = $.post( "passwordConfirm.php",{ confirm_password: term, token: token })
   .done(function( returnedData ) {
-    if(returnedData)
+    returnedData = JSON.parse(returnedData);
+    if(returnedData.didPass)
     {
-    	$("#confirm_password").addClass("hideForm");
-    	$("#change_password").removeClass("hideForm");
+      $("#errorDiv").addClass("hideObj");
+    	$("#confirm_password").addClass("hideObj");
+    	$("#change_password").removeClass("hideObj");
     	confirmed = true;
     }
     else
     {
-    	alert('Password Not Correct');
+      $("#errorDiv").removeClass("hideObj");
+      $("#errorDiv").empty();
+    	$("#errorDiv").append(returnedData.errors);
     }
   });
  
@@ -58,14 +63,17 @@ $( "#change_password" ).submit(function( event ) {
   // Send the data using post
   var posting = $.post( "changepassword.php",{ password: pass, password_again: pass_again, token: token })
   .done(function( returnedData ) {
-   	if(returnedData)
+    returnedData = JSON.parse(returnedData);
+   	if(returnedData.didPass)
    	{
    		window.location.replace("redirectToSettings.php");
     }
     else
     {
-		alert("Error");
-	}
+      $("#errorDiv").removeClass("hideObj");
+		  $("#errorDiv").empty();
+      $("#errorDiv").append(returnedData.errors);
+	   }
   });
 }
  
