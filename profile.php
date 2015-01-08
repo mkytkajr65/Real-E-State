@@ -4,9 +4,9 @@
   $currentUser = new User();
   if($currentUser->getIsLoggedIn())
   {
-    //if the user is logged in then grab his own information
     if($currentUser->data()->id==Input::get('id'))
     {
+      //if the user is logged in and hes on his own profile page
       $user = $currentUser;
     }
   }
@@ -43,32 +43,64 @@
       {
         include("modal.php");
       }
+      if($user->getIsLoggedIn())
+      {
+        if($currentUser->data()->id==Input::get('id'))
+        {
+          //if the user is logged in and hes on his own profile page
+          include("profilePicModal.php");
+          $cursorPointer = "cursorPointer";
+        }
+      }
     ?>
      <div class="container-fluid">
       <div class="row"> <!--Entire Page Row-->
         <div class="col-md-12"> 
           <div class="row"> <!--Top Row-->
             <div class="col-md-12">
-              <div class="row" id=""> 
+              <div class="row">
+                <div class="col-md-12 absolute" id="profilePageHeader"></div>
                 <div class="col-md-offset-1 col-md-2"> <!--Side Column-->
                   <div class="row"> 
                     <div class="col-md-12" id="profileInfoAreaContainer">
-                      <img src="images/<?php echo $user->picture ?>" class="img-responsive sBlueBorder"
-                      id="profileBubble" alt="<?php echo $user->data()->first_name?>'s profile pic">
+                      <div class="image">
+                          <img src="images/<?php echo $user->picture ?>" class="img-responsive sBlueBorder
+                          <?php
+                            if($user->getIsLoggedIn())
+                            {
+                              if($currentUser->data()->id==Input::get('id'))
+                              {
+                                echo ' cursorPointer';
+                              }
+                            }
+                          ?>"
+                          id="profileBubble" alt="<?php echo $user->data()->first_name?>'s profile pic">
+                          <?php
+                            if($user->getIsLoggedIn())
+                            {
+                              if($currentUser->data()->id==Input::get('id'))
+                              {
+                                //if the user is logged in and hes on his own profile page
+                                echo "<h2 class='editProfilePic lead hidden'><span>edit</span></h2>";
+                              }
+                            }
+                          ?>
+                      </div>
+                      
                       <div class="text-center lead" id="nameDiv">
-                          <p><?php echo $name; ?></p>
+                          <p><?php echo escape($name); ?></p>
                       </div>
                       <div class="lead" id="profileInfoArea">
                         <div class="profileInfo">
                           <strong class="sBlueBorder profileInfoHeader">Bio:</strong>
                           <div class="pInfoText">
-                            <?php echo "\"{$user->bio}\""; ?>
+                            <?php echo "\"".escape($user->bio)."\""; ?>
                           </div>
                         </div>
                         <div class="profileInfo">
                           <strong class="sBlueBorder profileInfoHeader">Type:</strong>
                           <div class="pInfoText">
-                            <?php echo $user->data()->account_type; ?>
+                            <?php echo escape($user->data()->account_type); ?>
                           </div>
                         </div>
                       </div>
@@ -90,5 +122,15 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/modal.js"></script>
+    <?php
+    if($user->getIsLoggedIn())
+    {
+      if($currentUser->data()->id==Input::get('id'))
+      {
+        //if the user is logged in and hes on his own profile page
+        echo '<script src="js/changeProfilePic.js"></script>';
+      }
+    }
+  ?>
   </body>
 </html>

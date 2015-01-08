@@ -1,10 +1,10 @@
 body
 {
-	background-color: #43474C;
+	background-color: #EDEDED;
 }
 
 .navbar {
-    margin-bottom: 1em;
+    margin-bottom: 3em;
 }
 
 #profileBubble
@@ -18,9 +18,8 @@ body
 #profileInfoAreaContainer
 {
 	padding: 2em 1em;
-	background-color:#1f2423; 
-	opacity: .9;
-	border-radius: 2px;
+	background-color:#1f2423;
+	border-radius: 0 0 2px 2px;
 }
 
 #profileInfoArea
@@ -53,5 +52,28 @@ body
 
 #profilePageHeader
 {
-	background-color: black;
+	height: 20.5em;
+	background-color: #383C40;
+	zoom: 1;
+	filter: alpha(opacity=60);
+	opacity: 0.6;
+}
+
+#profileBubble
+{ 
+   position: relative; 
+   width: 100%; /* for IE 6 */ 
+}
+
+h2.editProfilePic { 
+   position: absolute; 
+   top: 5em; 
+   left: 5em; 
+   width: 100%; 
+   pointer-events: none
+}
+
+h2.editProfilePic span { 
+   color: white; 
+   letter-spacing: -1px; 
 }
