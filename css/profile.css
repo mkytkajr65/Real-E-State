@@ -25,12 +25,12 @@ body
 #profileInfoArea
 {
 	color:white;
-	margin-top: 1em;
+	margin-top: 2em;
 }
 
 .profileInfo
 {
-	margin-top: .5em;
+	margin-top: 1em;
 }
 
 .profileInfoHeader
@@ -42,7 +42,7 @@ body
 .pInfoText
 {
 	font-size: .7em;
-	margin-top: .5em;
+	margin-top: .8em;
 }
 
 #nameDiv
@@ -52,11 +52,13 @@ body
 
 #profilePageHeader
 {
-	height: 20.5em;
+	height: 21em;
 	background-color: #383C40;
 	zoom: 1;
-	filter: alpha(opacity=60);
-	opacity: 0.6;
+	filter: alpha(opacity=70);
+	opacity: 0.7;
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
 }
 
 #profileBubble
@@ -70,10 +72,92 @@ h2.editProfilePic {
    top: 5em; 
    left: 5em; 
    width: 100%; 
-   pointer-events: none
+   pointer-events: none;
 }
 
 h2.editProfilePic span { 
    color: white; 
    letter-spacing: -1px; 
+}
+
+#profileSpacing
+{
+	height: 21em;
+}
+
+#postArea
+{
+	margin-top: 1em;
+}
+
+#postProfile
+{
+	resize: none;
+}
+
+.coolButton:hover, .coolButton:focus
+{
+	border-color: black;
+}
+
+.coolButton, .coolButton:hover, .coolButton:focus
+{
+	background-color: #337ab7;
+}
+
+#postButton
+{
+	margin-top: .5em;
+}
+
+.post
+{
+	background-color: #FFFFFF;
+	border-radius: 2px;
+	margin-top: 3em;
+	padding-top:.2em;
+	padding-bottom:.5em;
+}
+
+.postImage
+{
+	position: relative;
+	height: 3em;
+	width: 3em;
+	left:-1.6em;
+	top:-1.7em;
+}
+#postWall
+{
+	margin-top: 2em;
+}
+
+.savePost
+{
+	cursor: pointer;
+	font-size: 1.5em;
+	left: .6em;
+}
+
+.postBody
+{
+	font-size: 1.4em;
+	line-height: 1.2em;
+	margin-bottom: 0;
+}
+
+.account_type
+{
+	color:#D3D3D3;
+}
+
+.sharePost
+{
+	cursor: pointer;
+	left: .6em;
+}
+
+.smallSocial
+{
+	width: 1em;
 }

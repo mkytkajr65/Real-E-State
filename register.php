@@ -91,8 +91,6 @@
 
                       $salt = Hash::salt(32);
 
-                      print_r($_FILES);
-
                       if(isset($_FILES['picture'])){
                         $errors= array();
                         $file_name = $_FILES['picture']['name'];
@@ -111,9 +109,9 @@
                         if(empty($errors)==true){
                             $picture = $file_name;
                             move_uploaded_file($file_tmp,"images/".$file_name);
-                            echo "Success";
                         }else{
                             print_r($errors);
+                            die();
                         }
                       }
                       else

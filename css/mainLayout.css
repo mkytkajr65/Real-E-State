@@ -1,6 +1,7 @@
 body
 {
 	background-color: #E0E0E0;
+    padding-bottom: 5em; 
 }
 .entireWidth
 {
@@ -79,8 +80,27 @@ body
     position: absolute;
 }
 
+.relative
+{
+    position: relative;
+}
+
 .cursorPointer
 {
     cursor: pointer;
 }
 
+.hideObj
+{
+    display:none;
+}
+
+.z-important
+{
+    z-index: 999999 !important;
+}
+
+.noPadding
+{
+    padding:0;
+}
