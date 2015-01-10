@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Carbon package. It has been modified by Steve Patterson to remove functionality that is not needed in OurTrack.
+ * This file is part of the Carbon package. Modified by Steve Patterson
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
  *

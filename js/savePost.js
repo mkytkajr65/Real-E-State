@@ -19,5 +19,7 @@ $(".savePost").click(function(){
 		$(this).removeClass("glyphicon glyphicon-star");
 		$(this).addClass("glyphicon glyphicon-star-empty");
 		numOfClicks++;
+		var that = $(this)
+		that.tooltip('hide');
 	}
 });

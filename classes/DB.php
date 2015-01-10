@@ -55,7 +55,7 @@ class DB
 	}
 
 	public function fetchToClass($sql, $class) {
-		$this->_query = $this->_pdo->_query($sql);
+		$this->_query = $this->_pdo->query($sql);
 
 		if ($this->_query->execute()) {
 			$this->_results = $this->_query->fetchAll(PDO::FETCH_CLASS, $class);
