@@ -8,7 +8,7 @@ $( "#profile_pic_form" ).submit(function( event ) {
  
   // Stop form from submitting normally
   event.preventDefault();
-  window.location.replace("redirectToProfile.php");
+  window.location.replace("redirectToProfile.php");//doesnt work so it just redirects to same page
 
   // Get some values from elements on the page:
   var $form = $( this ),

@@ -1,5 +1,7 @@
 <?php use Carbon\Carbon;
+  $postUser = new User($this->user_id);
   $postName = escapeName($postUser->data()->first_name)." ".escapeName($postUser->data()->last_name);
+  $current_user = new User();
  ?>
 <div class="row post"><!--Post Start-->
   <div class="col-md-12">
@@ -17,8 +19,15 @@
       <div class="col-md-offset-10 col-md-2 absolute">
         <div class="row">
           <div class="col-md-12 text-right">
-            <span class="glyphicon glyphicon-star-empty savePost noselect" data-toggle="tooltip"
+            <?php if(!$this->userSavedPost($current_user)){ ?>
+            <span class="glyphicon glyphicon-star-empty savePost noselect" data-postid="<?php echo $this->id; ?>" data-type="empty" data-toggle="tooltip"
              data-placement="top" data-trigger='manual' title="Saved!" aria-label="save" aria-hidden="true"></span>
+             <?php
+              }else
+              {?>
+                <span class="glyphicon glyphicon-star savePost noselect" data-postid="<?php echo $this->id; ?>" data-type="star" data-toggle="tooltip"
+                data-placement="top" data-trigger='manual' title="Saved!" aria-label="save" aria-hidden="true"></span>
+               <?php }?>
           </div>
         </div>
       </div>
@@ -35,11 +44,11 @@
     <div class="row"> <!--Saves, Time, and Share-->
       <div class="col-md-12">
         <div class="row">
-          <div class="col-md-3">
-            <label aria-label="saves">Saves</label><span class="sBlue"><?php echo " ".escape($this->saves) ?></span>
+          <div class="col-md-5">
+            <label aria-label="saves">Saves </label><span class="sBlue numSaves"><?php echo " ".escape($this->saves) ?></span>
             <span>- </span><span aria-label="time posted since" class="neon"><?php echo Carbon::createFromTimeStamp(strtotime($this->created_at))->diffForHumans();?></span>
           </div>
-          <div class="col-md-offset-7 col-md-2">
+          <div class="col-md-offset-5 col-md-2">
             <div class="row">
               <div class="col-md-offset-3 col-md-9 text-right">
                 <label>Share </label><span class="glyphicon glyphicon-share sharePost noselect"

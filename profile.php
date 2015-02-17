@@ -15,7 +15,7 @@
     Redirect::to('404');
   }
 	$name = escapeName($user->data()->first_name)." ".escapeName($user->data()->last_name);
-  $userPosts = DB::getInstance()->fetchToClass("SELECT * FROM users_posts WHERE `user_id`=".$user->data()->id, 'Post');
+  $userPosts = DB::getInstance()->fetchToClass("SELECT * FROM users_posts WHERE `user_id`=".$user->data()->id." ORDER BY `created_at` DESC", 'Post');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -123,10 +123,27 @@
                       <?php if($user->getIsLoggedIn()){ ?>
                       <div class="row" id="postArea">
                         <div class="col-md-6 center-block">
-                          <form action="" method="post">
-                            <textarea class="form-control" id="postProfile" maxlength="300"  rows="3"></textarea>
-                            <button type="submit" class="btn btn-primary entireWidth coolButton" id="postButton">Submit Post</button>
-                          </form>
+                          <div id="postType" class="row">
+                            <div class="col-md-12">
+                              <div class="row">
+                                <div id="postType-text" class="col-md-1 postType postTypeActive cursorPointer">
+                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                </div>
+                                <div id="postType-picture" class="col-md-1 postType cursorPointer">
+                                  <span class="glyphicon glyphicon-camera cursorPointer" aria-hidden="true"></span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12 noPadding">
+                              <form id="postProfileForm" action="" method="post">
+                                <textarea class="form-control" id="postProfile" name="post_body" maxlength="300"  rows="3"></textarea>
+                                <input type="hidden" name="token" value="<?php echo Token::generate(); ?>" >
+                                <button type="submit" class="btn btn-primary entireWidth coolButton" id="postButton">Submit Post</button>
+                              </form>
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <?php } ?>
@@ -142,11 +159,9 @@
                             }
                             else
                             {
-                              echo "<h1>No Posts</h1>";
+                              echo "<h1 id='noPost'>No Posts</h1>";
                             }
                           ?>
-
-
                         </div>
                       </div>
                     </div>
@@ -167,6 +182,8 @@
     <script src="js/profilePicChange.js"></script>
     <script src="js/savePost.js"></script>
     <script src="js/sharePost.js"></script>
+    <script src="js/profilePostType.js"></script>
+    <script src="js/submitPostProfile.js"></script>
     <?php
     if($user->getIsLoggedIn())
     {

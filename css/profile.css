@@ -93,6 +93,10 @@ h2.editProfilePic span {
 #postProfile
 {
 	resize: none;
+	border-radius:0 0 5px 5px;
+	border: 1px solid black;
+	border-top: 0;
+	padding: .2em;
 }
 
 .coolButton:hover, .coolButton:focus
@@ -160,4 +164,37 @@ h2.editProfilePic span {
 .smallSocial
 {
 	width: 1em;
+}
+
+.postTypeActive
+{
+	background-color: #333;
+	color: white
+}
+
+#postType-text
+{
+	height: 2em;
+}
+
+#postType-picture
+{
+	height: 2em;
+}
+
+#postType
+{
+	background-color: #B8B8B8;
+	border: 1px solid black;
+	border-bottom: 0;
+}
+
+#postType-text > span
+{
+	vertical-align: middle;
+}
+
+#postType-picture > span
+{
+	vertical-align: middle;
 }

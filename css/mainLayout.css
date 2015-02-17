@@ -18,9 +18,14 @@ body
 	float:none;
 }
 
+.borderWhite
+{
+	border: 1px solid white;
+}
+
 .border
 {
-	border: 1px solid black;
+    border: 1px solid black;
 }
 
 .noselect {
@@ -103,4 +108,17 @@ body
 .noPadding
 {
     padding:0;
+}
+
+.vCenterHelper
+{
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.vCenter
+{
+    display: inline-block;
+    vertical-align: center;
 }

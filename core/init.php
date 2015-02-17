@@ -37,4 +37,5 @@ if(Cookie::exists(Config::get('remember/cookie_name')) && !Session::exists(Confi
 		$user->login();
 	}
 }
+date_default_timezone_set('America/New_York');
 ?>
